@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+public class App {
+
+    static Scanner scan = new Scanner(System.in);
+
+    public static void main(String[] args) throws Exception {
+
+        train("license");
+        scan.close();
+    }
+
+    static void train(String driving) {
+
+        System.out.println("---------------Testing driving skills---------------");
+        test(driving);
+
+        String feedback = getFeedBack(driving);
+        // Define the base case / stopping condition
+        if (feedback.equals("no")) {
+
+            // Do something to get your license
+            retrain(driving);
+
+            // Recursive call
+            train(driving);
+        } else if (feedback.equals("yes")) {
+            System.out.println("You can now get your driving license! Horay!");
+        }
+    }
+    static void test(String driving) {
+        System.out.println("Now driving... broom broom...");
+    }
+
+    static String getFeedBack(String driving) {
+        System.out.println("Is the " + driving + " approved by the instructor? (Enter \"yes\" or \"no\")");
+
+        String feedback = scan.next();
+
+        return feedback;
+    }
+
+    static void retrain(String driving) {
+        System.out.print("Enter what skills needed:");
+        String skills = scan.next();
+        System.out.println("Fixing driving skills. Added: " + skills);
+    }
+
+    static void license(String license) {
+        System.out.println( "driving " + license);
+    }
+
+}
